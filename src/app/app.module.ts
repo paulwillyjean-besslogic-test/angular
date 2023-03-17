@@ -15,12 +15,22 @@ import { AircraftsTableComponent } from './aircrafts-table/aircrafts-table.compo
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { HomeComponent } from './home/home.component';
+import { AircraftListComponent } from './aircraft-list/aircraft-list.component';
+import { AircraftAddComponent } from './aircraft-add/aircraft-add.component';
+import { AircraftViewComponent } from './aircraft-view/aircraft-view.component';
+import { AircraftEditComponent } from './aircraft-edit/aircraft-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
     AircraftsTableComponent,
+    HomeComponent,
+    AircraftListComponent,
+    AircraftAddComponent,
+    AircraftViewComponent,
+    AircraftEditComponent,
   ],
   imports: [
     BrowserModule,
