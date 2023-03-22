@@ -20,6 +20,7 @@ import { AircraftListComponent } from './aircraft-list/aircraft-list.component';
 import { AircraftAddComponent } from './aircraft-add/aircraft-add.component';
 import { AircraftViewComponent } from './aircraft-view/aircraft-view.component';
 import { AircraftEditComponent } from './aircraft-edit/aircraft-edit.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AircraftEditComponent } from './aircraft-edit/aircraft-edit.component';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
