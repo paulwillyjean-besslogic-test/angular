@@ -3,9 +3,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { Aircraft } from '../aircraft.model';
-import { ActivatedRoute } from '@angular/router';
+import { Aircraft } from '../../models/aircraft';
+import { Injectable } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root'
+})
 /**
  * Data source for the AircraftsTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data

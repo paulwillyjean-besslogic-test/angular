@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Aircraft, RegistrationStatus } from './aircraft.model';
 import { environment } from 'src/environments/environment';
+import { Aircraft } from './models/aircraft';
+import { RegistrationStatus } from './models/registration-status';
 
 const EXAMPLE_DATA: Aircraft[] = [
   {registrationNumber: 1, modelName: 'Hydrogen', serialNumber: 'S-001', registrationStatus: RegistrationStatus.Pending, registrationDate: new Date()},
@@ -37,5 +38,9 @@ export class AircraftsService {
 
   getList(): Observable<Aircraft[]> {
     return this.http.get<Aircraft[]>(`${environment.apiUrl}/aircraft`);
+  }
+
+  get(id: number): Observable<Aircraft> {
+    return this.http.get<Aircraft>(`${environment.apiUrl}/aircraft/${id}`);
   }
 }

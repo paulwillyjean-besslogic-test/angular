@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { Aircraft } from '../aircraft.model';
+import { Aircraft } from '../../models/aircraft';
 import { AircraftsTableDataSource } from './aircrafts-table-datasource';
 
 @Component({
@@ -15,13 +15,12 @@ export class AircraftsTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Aircraft>;
-  dataSource: AircraftsTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['Registration Number', 'Serial Number', 'Model Name', 'Registration Status', 'Registration Date'];
 
-  constructor(private route: ActivatedRoute) {
-    this.dataSource = new AircraftsTableDataSource();
+  constructor(private route: ActivatedRoute, public dataSource: AircraftsTableDataSource) {
+    
   }
 
   ngOnInit(): void {
