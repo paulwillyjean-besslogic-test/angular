@@ -5,6 +5,11 @@ import { environment } from 'src/environments/environment';
 import { Aircraft } from './models/aircraft';
 import { RegistrationStatus } from './models/registration-status';
 
+export interface AddAircraftPayload {
+  serialNumber:string,
+  modelName:string
+}
+
 const EXAMPLE_DATA: Aircraft[] = [
   {registrationNumber: 1, modelName: 'Hydrogen', serialNumber: 'S-001', registrationStatus: RegistrationStatus.Pending, registrationDate: new Date()},
   {registrationNumber: 2, modelName: 'Helium', serialNumber: 'S-002', registrationStatus: RegistrationStatus.Valid, registrationDate: new Date('1970-01-01')},
@@ -32,8 +37,6 @@ const EXAMPLE_DATA: Aircraft[] = [
   providedIn: 'root'
 })
 export class AircraftsService {
-
-  
   constructor(private http: HttpClient) { }
 
   getList(): Observable<Aircraft[]> {
@@ -44,5 +47,15 @@ export class AircraftsService {
   get(id: number): Observable<Aircraft|undefined> {
     return this.http.get<Aircraft>(`${environment.apiUrl}/aircraft/${id}`)
       .pipe(catchError(() => of(EXAMPLE_DATA.find(item => item.registrationNumber === id))))
+  }
+
+  add(aircraft:AddAircraftPayload): Observable<Aircraft> {
+    return this.http.post<Aircraft>(`${environment.apiUrl}/aircraft`, aircraft)
+      .pipe(catchError(() => EMPTY));
+  }
+
+  update(id: number, aircraft: Aircraft): Observable<Aircraft> {
+    return this.http.put<Aircraft>(`${environment.apiUrl}/aircraft/${id}`, aircraft)
+      .pipe(catchError(() => EMPTY));
   }
 }

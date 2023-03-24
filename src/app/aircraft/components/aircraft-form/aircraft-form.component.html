@@ -1,0 +1,26 @@
+<form (ngSubmit)="submitAircraft($event)" [formGroup]="form" name="aircraft" id="aircraft">
+    <mat-form-field class="full-width" *ngIf="form.contains('registrationNumber')">
+        <mat-label>Registration Number</mat-label>
+        <input matInput formControlName="registrationNumber">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>Serial Number</mat-label>
+        <input matInput formControlName="serialNumber">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>Model Name</mat-label>
+        <input matInput formControlName="modelName">
+    </mat-form-field>
+    <mat-form-field class="full-width" *ngIf="form.contains('registrationStatus')">
+        <mat-label>Registration Status</mat-label>
+        <mat-select matInput formControlName="registrationStatus">
+            <mat-option *ngFor="let option of registrationOptions" [value]="option.value">{{option.label}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width" *ngIf="form.contains('registrationDate')">
+        <mat-label>Registration Date</mat-label>
+        <input matInput [matDatepicker]="registrationDate">
+        <mat-datepicker-toggle matIconSuffix [for]="registrationDate"></mat-datepicker-toggle>
+        <mat-datepicker #registrationDate></mat-datepicker>
+    </mat-form-field>
+</form>
