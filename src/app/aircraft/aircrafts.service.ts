@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Aircraft } from './models/aircraft';
 import { RegistrationStatus } from './models/registration-status';
@@ -37,7 +37,10 @@ export class AircraftsService {
   constructor(private http: HttpClient) { }
 
   getList(): Observable<Aircraft[]> {
-    return this.http.get<Aircraft[]>(`${environment.apiUrl}/aircraft`);
+    return this.http.get<Aircraft[]>(`${environment.apiUrl}/aircraft`)
+      .pipe(catchError((err: HttpErrorResponse) => {
+        return of(EXAMPLE_DATA);
+      }))
   }
 
   get(id: number): Observable<Aircraft> {

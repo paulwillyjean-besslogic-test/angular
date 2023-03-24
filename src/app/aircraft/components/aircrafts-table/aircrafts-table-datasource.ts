@@ -4,24 +4,16 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { Aircraft } from '../../models/aircraft';
-import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
 /**
  * Data source for the AircraftsTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
 export class AircraftsTableDataSource extends DataSource<Aircraft> {
-  data: Aircraft[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
-
-  constructor() {
-    super();
-  }
+  data!: Aircraft[];
 
   /**
    * Connect this data source to the table. The table will only update when
@@ -72,11 +64,11 @@ export class AircraftsTableDataSource extends DataSource<Aircraft> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'Registration Number': return compare(a.registrationNumber, b.registrationNumber, isAsc);
-        case 'Model Name': return compare(a.modelName, b.modelName, isAsc);
-        case 'Serial Number': return compare(a.serialNumber, b.serialNumber, isAsc);
-        case 'Registration Status': return compare(a.registrationStatus, b.registrationStatus, isAsc);
-        case 'Registration Date': return compare(+a.registrationDate, +b.registrationDate, isAsc);
+        case 'registrationNumber': return compare(a.registrationNumber, b.registrationNumber, isAsc);
+        case 'modelName': return compare(a.modelName, b.modelName, isAsc);
+        case 'serialNumber': return compare(a.serialNumber, b.serialNumber, isAsc);
+        case 'registrationStatus': return compare(a.registrationStatus, b.registrationStatus, isAsc);
+        case 'registrationDate': return compare(+a.registrationDate, +b.registrationDate, isAsc);
         default: return 0;
       }
     });
