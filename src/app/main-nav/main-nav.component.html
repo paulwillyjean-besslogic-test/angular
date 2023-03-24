@@ -12,20 +12,15 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()"
-          *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-        <span>Aircrafts</span>
-      </mat-toolbar-row>
-      <mat-toolbar-row>
-        
-      </mat-toolbar-row>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Aircrafts</span>
     </mat-toolbar>
     <ng-content></ng-content>
     <!-- Add Content Here -->

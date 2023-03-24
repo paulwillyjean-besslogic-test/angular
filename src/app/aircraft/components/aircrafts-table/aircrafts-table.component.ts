@@ -18,7 +18,7 @@ export class AircraftsTableComponent implements AfterViewInit, OnInit {
   dataSource: AircraftsTableDataSource = new AircraftsTableDataSource();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['registrationNumber', 'serialNumber', 'modelName', 'registrationStatus', 'registrationDate'];
+  displayedColumns = ['registrationNumber', 'serialNumber', 'modelName', 'registrationStatus', 'registrationDate', 'actions'];
 
   ngOnInit(): void {
     this.dataSource.data = this.data;

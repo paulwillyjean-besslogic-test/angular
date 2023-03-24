@@ -19,6 +19,7 @@ const routes: Routes = [
                     aircraft: aircraftResolver
                 },
                 children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'view' },
                     { path: 'edit', title: 'Edit Aircraft', component: AircraftEditComponent },
                     { path: 'view', title: 'View Aircraft', component: AircraftViewComponent }
                 ]
