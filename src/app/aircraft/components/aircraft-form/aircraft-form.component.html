@@ -1,4 +1,4 @@
-<form (ngSubmit)="submitAircraft($event)" [formGroup]="form" name="aircraft" id="aircraft">
+<form (ngSubmit)="submitAircraft()" [formGroup]="form" name="aircraft" id="aircraft">
     <mat-form-field class="full-width" *ngIf="form.contains('registrationNumber')">
         <mat-label>Registration Number</mat-label>
         <input matInput formControlName="registrationNumber">

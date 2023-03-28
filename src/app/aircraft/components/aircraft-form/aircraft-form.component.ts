@@ -19,7 +19,7 @@ export interface AircraftForm {
 export class AircraftFormComponent implements OnInit {
 
   @Input() model?:Aircraft;
-  @Output() submit: EventEmitter<Aircraft> = new EventEmitter<Aircraft>();
+  @Output() ngSubmit: EventEmitter<Aircraft> = new EventEmitter<Aircraft>();
   @Output() name:string = 'aircraft';
   form: FormGroup<AircraftForm> = new FormGroup<AircraftForm>({
     registrationNumber: new FormControl(this.model?.registrationNumber || null, {
@@ -55,6 +55,10 @@ export class AircraftFormComponent implements OnInit {
     return this.form.valid;
   }
 
+  get value(): Aircraft|null {
+    return this.form.value as Aircraft;
+  }
+
   ngOnInit() {
     if (!this.model?.registrationNumber) {
       this.form.removeControl("registrationNumber");
@@ -66,9 +70,7 @@ export class AircraftFormComponent implements OnInit {
     this.form.reset(this.model);
   }
 
-  submitAircraft(event: SubmitEvent) {
-    event.preventDefault();
-
-    this.submit.emit(this.form.value as Aircraft);
+  submitAircraft(): void {
+    this.ngSubmit.emit(this.form.value as Aircraft);
   }
 }

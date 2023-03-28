@@ -13,4 +13,4 @@
         </button>
     </div>
 </mat-toolbar>
-<app-aircraft-form [model]="aircraft" #form (submit)="updateAircraft($event)"></app-aircraft-form>
+<app-aircraft-form [model]="aircraft" #form (ngSubmit)="updateAircraft($event)"></app-aircraft-form>
