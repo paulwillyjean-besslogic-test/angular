@@ -51,8 +51,8 @@ export class AircraftFormComponent implements OnInit {
     {value: RegistrationStatus.Retired, label: 'Retired'}
   ];
 
-  get valid(): boolean {
-    return this.form.valid;
+  get canSubmit(): boolean {
+    return this.form.valid && this.form.dirty;
   }
 
   get value(): Aircraft|null {

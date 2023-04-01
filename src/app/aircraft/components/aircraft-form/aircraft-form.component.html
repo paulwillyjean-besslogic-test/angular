@@ -1,7 +1,7 @@
 <form (ngSubmit)="submitAircraft()" [formGroup]="form" name="aircraft" id="aircraft">
     <mat-form-field class="full-width" *ngIf="form.contains('registrationNumber')">
         <mat-label>Registration Number</mat-label>
-        <input matInput formControlName="registrationNumber">
+        <input [readonly]="true" matInput formControlName="registrationNumber">
     </mat-form-field>
     <mat-form-field class="full-width">
         <mat-label>Serial Number</mat-label>
@@ -19,7 +19,7 @@
     </mat-form-field>
     <mat-form-field class="full-width" *ngIf="form.contains('registrationDate')">
         <mat-label>Registration Date</mat-label>
-        <input matInput [matDatepicker]="registrationDate">
+        <input matInput [matDatepicker]="registrationDate" formControlName="registrationDate">
         <mat-datepicker-toggle matIconSuffix [for]="registrationDate"></mat-datepicker-toggle>
         <mat-datepicker #registrationDate></mat-datepicker>
     </mat-form-field>

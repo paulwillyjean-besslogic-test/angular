@@ -7,7 +7,7 @@
     <span>Edit Aircraft</span>
     <span class="toolbar-spacer"></span>
     <div class="toolbar-actions">
-        <button [disabled]="!form.valid" mat-raised-button color="primary" [attr.form]="form.name">
+        <button [disabled]="!form.canSubmit" mat-raised-button color="primary" [attr.form]="form.name">
             <mat-icon>save</mat-icon>
             Save Aircraft
         </button>

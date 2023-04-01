@@ -15,7 +15,7 @@ export class AircraftAddComponent {
     this.aircrafts.add(data)
       .subscribe((aircraft: Aircraft) => {
         if (aircraft) {
-          this.router.navigate(['/aircrafts', aircraft.registrationNumber, 'view']);
+          this.router.navigate(['/aircraft', aircraft.registrationNumber, 'view']);
         }
 
       });
