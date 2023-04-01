@@ -10,8 +10,6 @@ import { Aircraft } from '../../models/aircraft';
 export class AircraftViewComponent implements OnInit {
   aircraft!:Aircraft;
   id!: number;
-  data: object[] = [];
-  columns = ['key', 'value'];
 
   constructor(private route: ActivatedRoute) {}
 
@@ -19,13 +17,6 @@ export class AircraftViewComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.aircraft = data['aircraft'];
       this.id = this.aircraft.registrationNumber;
-      this.data = Object.entries({
-        "Registration Number": this.aircraft.registrationNumber,
-        "Serial Number": this.aircraft.serialNumber,
-        "Model Name": this.aircraft.modelName,
-        "Registration Status": this.aircraft.registrationStatus,
-        "Registration Date": this.aircraft.registrationDate && this.aircraft.registrationDate.toLocaleDateString()
-      });
     })
   }
 }

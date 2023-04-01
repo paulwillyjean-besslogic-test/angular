@@ -1,3 +1,19 @@
 .toolbar-spacer {
     flex: 1 1 auto;
 }
+
+.aircraft-view {
+    padding: 10px;
+
+    > .actions {
+        margin-bottom: 16px;
+    }
+}
+
+.aircraft-header {
+    margin-bottom: 16px;
+
+    .serial-number {
+        margin-bottom: 0;
+    }
+}

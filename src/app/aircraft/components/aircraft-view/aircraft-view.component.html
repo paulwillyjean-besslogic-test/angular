@@ -1,26 +1,22 @@
-<mat-toolbar>
-    <a mat-raised-button [routerLink]="['/aircraft']">
-        <mat-icon>arrow_back</mat-icon>
-        Back to List
-    </a>
-    <span class="toolbar-spacer"></span>
-    <span>{{ aircraft.serialNumber }} - {{ aircraft.modelName }}</span>
-    <span class="toolbar-spacer"></span>
-    <div class="toolbar-actions">
+<section class="aircraft-view">
+    <div class="actions">
         <a mat-raised-button [routerLink]="['/aircraft', id, 'edit']">
             <mat-icon>edit_document</mat-icon>
             Edit Aircraft
         </a>
     </div>
-</mat-toolbar>
-<section class="aircraft-description">
-    <table mat-table [dataSource]="data" class="aircraft-description-table">
-        <ng-container matColumnDef="key">
-            <td mat-cell *matCellDef="let row">{{ row[0] }}</td>
-        </ng-container>
-        <ng-container matColumnDef="value">
-            <td mat-cell *matCellDef="let row">{{ row[1] }}</td>
-        </ng-container>
-        <tr mat-row *matRowDef="let row; columns: ['key', 'value']"></tr>
-    </table>
+    <header class="aircraft-header">
+        <h1 class="serial-number">{{ aircraft.serialNumber }}</h1>
+        <span class="registration-date">Registered on 
+            <time [attr.datetime]="aircraft.registrationDate">
+                {{ aircraft.registrationDate | date }}
+            </time>
+        </span>
+    </header>
+    <h2>Registration Status</h2>
+    <mat-chip-set class="registration-status" aria-label="Registration Status">
+        <mat-chip color="accent" highlighted>{{ aircraft.registrationStatus }}</mat-chip>
+    </mat-chip-set>
+    <h2>Model Name</h2>
+    {{ aircraft.modelName }}
 </section>
